@@ -1,0 +1,61 @@
+﻿@model IEnumerable<Employee>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h1>Our Employees</h1></center>
+<div class="d-flex justify-content-between mb-4">
+    <form asp-action="Index" class="d-flex">
+        <input type="text" name="Name" class="form-control me-2" placeholder="Search by name..."  />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </form>
+    <a class="btn btn-primary" asp-action="Create">Create New Employee</a>
+</div>
+
+
+<section>
+    <div class="row">
+        @if (Model == null || !Model.Any())
+        {
+            <center>
+                <section>
+                    <div class="col-12 text-center my-4">
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading">No Employees Found</h4>
+                            <p class="mb-0">It seems there are currently no employees to display.</p>
+                        </div>
+                    </div>
+                </section>
+            </center>
+        }
+        else
+        {
+            @foreach (var employee in Model)
+            {
+                <div class="col-md-4" >
+                    <div class="card" style="width:177px;">
+                        <div class="d-flex justify-content-center">
+                            <img src="~/Files/Images/@employee.ImageName" class="card-img-top" alt="@employee.Name" style="width: 150px; height: 200px;" />
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@employee.Name</h5>
+                            <h6 class="card-text">@employee.Job_Title</h6>
+                            <p class="card-text">@employee.Department.Name</p>
+                            
+                            <div class="btn-group btn-group-sm d-flex justify-content-center" role="group" aria-label="Employee actions">
+                                <a asp-controller="Employee" asp-action="Details" asp-route-id="@employee.Employee_Id" class="btn btn-primary flex-fill">Details</a>
+                                <a asp-action="Edit" asp-route-id="@employee.Employee_Id" class="btn btn-warning flex-fill">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@employee.Employee_Id" class="btn btn-danger flex-fill">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+    </div>
+</section>
+

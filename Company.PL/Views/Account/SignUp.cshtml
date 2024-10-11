@@ -1,0 +1,55 @@
+﻿@model SignUpViewModel
+@{
+    ViewData["Title"] = "Registration";
+    Layout = "_AuthLayout";
+}
+
+<!-- Title section -->
+<div class="title">Registration</div>
+<div class="content">
+    <!-- Registration form -->
+    <form asp-action="SignUp">
+        <div class="user-details">
+            <!-- Input for Full Name -->
+            <div class="input-box">
+                <span class="details">First Name</span>
+                <input type="text" asp-for="FName" placeholder="Enter your first name" required>
+            </div>
+            <div class="input-box">
+                <span class="details">Last Name</span>
+                <input type="text" asp-for="LName" placeholder="Enter your last name" required>
+            </div>
+            <!-- Input for Username -->
+            <div class="input-box">
+                <span class="details">Username</span>
+                <input type="text" asp-for="UserName" placeholder="Enter your username" required>
+            </div>
+            <!-- Input for Email -->
+            <div class="input-box">
+                <span class="details">Email</span>
+                <input type="text" asp-for="Email" placeholder="Enter your email" required>
+            </div>
+            <!-- Input for Password -->
+            <div class="input-box">
+                <span class="details">Password</span>
+                <input type="password" asp-for="Password" placeholder="Enter your password" required>
+            </div>
+            <!-- Input for Confirm Password -->
+            <div class="input-box">
+                <span class="details">Confirm Password</span>
+                <input type="password" asp-for="ConfirmPassword" placeholder="Confirm your password" required>
+            </div>
+        <div class="button">
+            <input type="submit" value="Register">
+        </div>
+    </form>
+    <div class="input-box">
+        <p class="account-text">Already Have an Account?</p>
+        <a asp-action="SignIn" class="sign-in-btn">Sign In Now!</a>
+    </div>
+
+</div>
+
+@* @section Scripts{
+    <partial name="/Views/Shared/_ValidationScriptsPartial.cshtml" />
+} *@

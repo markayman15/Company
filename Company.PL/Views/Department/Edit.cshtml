@@ -1,0 +1,39 @@
+﻿@model DepartmentViewModel
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data">
+
+    <div class="form-group m-3">
+        <label asp-for="Name" class="control-label"></label>
+        <input type="text" asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="form-group m-3">
+        <label asp-for="Creation_Date" class="control-label"></label>
+        <input type="date" asp-for="Creation_Date" class="form-control" />
+        <span asp-validation-for="Creation_Date" class="text-danger"></span>
+    </div>
+
+    <div class="form-group m-3">
+        <label for="Image" class="control-label">Image</label>
+        <input type="file" name="Image" class="form-control-file" />
+    </div>
+
+    <div class="form-group m-3">
+        
+        <input hidden type="text" asp-for="ImageName" class="form-control" />
+        
+    </div>
+
+    <div class="form-group m-3">
+        <button type="submit" class="btn btn-primary">Save</button>
+    </div>
+</form>
+<div class="form-group m-3">
+    <a asp-action="Index" class="btn btn-primary">Back To List</a>
+</div>
+

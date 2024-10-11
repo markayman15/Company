@@ -1,0 +1,59 @@
+﻿@model IEnumerable<Department>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<center><h1>Our Departments</h1></center>
+<div class="d-flex justify-content-between mb-4">
+    <form asp-action="Index" class="d-flex">
+        <input type="text" name="DepartmentName" class="form-control me-2" placeholder="Search by name..." />
+        <button type="submit" class="btn btn-outline-primary">Search</button>
+    </form>
+    <a class="btn btn-primary" asp-action="Create">Create Department</a>
+</div>
+
+<section>
+    <div class="row">
+        @if (Model == null || !Model.Any())
+        {
+            <center>
+                <section>
+                    <div class="col-12 text-center my-4">
+                        <div class="alert alert-warning" role="alert">
+                            <h4 class="alert-heading">No Departments Found</h4>
+                            <p class="mb-0">It seems there are currently no Departments to display.</p>
+                        </div>
+                    </div>
+                </section>
+            </center>
+        }
+        else
+        {
+            @foreach (var department in Model)
+            {
+                <div class="col-md-4" >
+                    <div class="card" style="width:177px;">
+                        <div class="d-flex justify-content-center">
+                            <img src="~/Files/Images/@department.ImageName" class="card-img-top" alt="@department.Name" style="width: 150px; height: 200px;" />
+                        </div>
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@department.Name</h5>
+                            @* <p class="card-text">@department.Creation_Date</p> *@
+                            
+                            <div class="btn-group btn-group-sm d-flex justify-content-center" role="group" aria-label="Department actions">
+                                <a asp-controller="Department" asp-action="Details" asp-route-id="@department.Department_Id" class="btn btn-primary flex-fill">Details</a>
+                                <a asp-action="Edit" asp-route-id="@department.Department_Id" class="btn btn-warning flex-fill">Edit</a>
+                                <a asp-action="Delete" asp-route-id="@department.Department_Id" class="btn btn-danger flex-fill">Delete</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            }
+        }
+
+    </div>
+</section>
+

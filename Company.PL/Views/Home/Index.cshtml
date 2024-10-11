@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@if (!string.IsNullOrEmpty(TempData["UserName"] as string))
+{
+    <div>
+        <p>Welcom @TempData["UserName"]</p>
+    </div>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome To Our Company</h1>
+    <section class="employees-section py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 my-3">
+                    <div class="card shadow-sm">
+                        <a asp-controller="Employee" asp-action="Index" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Employees</h5>
+                                @* Uncomment the following lines as needed *@
+                                @* <p class="card-text">@employee.Position</p> *@
+                                @* <p class="card-text"><small class="text-muted">Department: @department.DepartmentName</small></p> *@
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-4 my-3">
+                    <div class="card shadow-sm">
+                        <a asp-controller="Department" asp-action="Index" class="text-decoration-none text-dark">
+                            <div class="card-body">
+                                <h5 class="card-title">Our Departments</h5>
+                                @* Uncomment the following lines as needed *@
+                                @* <p class="card-text">Department Info Here</p> *@
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
